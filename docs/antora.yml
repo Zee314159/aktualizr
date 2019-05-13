@@ -1,0 +1,6 @@
+name: aktualizr
+title: Aktualizr Guide
+version: dev
+nav:
+- modules/ROOT/nav.adoc
+- modules/aktualizr-guide/nav.adoc
