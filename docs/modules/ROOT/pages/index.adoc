@@ -27,7 +27,7 @@ This page is used as the home page for the new OTA Connect Docs demo because it 
 
 To create a cross reference *to this page from another page in the ROOT module of the Aktualizr repo*, the xref syntax would be `\xref:index.adoc[]`.
 
-To create a cross reference *to this page from a page in the OTA CE guide of the OTA CE repo*, the xref syntax would be `\xref:ROOT:index.adoc[]`.
+To create a cross reference *to this page from a page in the Aktualizr guide of the Aktualizr repo*, the xref syntax would be `\xref:ROOT:index.adoc[]`.
 
 === Always target the latest version of this page
 

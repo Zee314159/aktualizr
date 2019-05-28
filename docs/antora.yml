@@ -1,6 +1,6 @@
-name: aktualizr
-title: Aktualizr Guide
+name: getstarted
+title: Get Started Guide
 version: dev
 nav:
-- modules/ROOT/nav.adoc
-- modules/aktualizr-guide/nav.adoc
+# - modules/ROOT/nav.adoc
+- modules/getstarted-guide/nav.adoc
