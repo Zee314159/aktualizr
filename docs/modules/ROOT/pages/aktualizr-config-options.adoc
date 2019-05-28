@@ -1,0 +1,8 @@
+= Client configuration options
+:page-layout: page
+:page-categories: [client-config]
+:page-date: 2018-07-05 11:14:01
+:page-order: 20
+:icons: font
+
+include::https://raw.githubusercontent.com/advancedtelematic/aktualizr/master/docs/configuration.adoc[lines=2..-1]

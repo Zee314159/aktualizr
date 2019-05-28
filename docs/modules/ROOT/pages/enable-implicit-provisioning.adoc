@@ -1,0 +1,72 @@
+= Enable Implicit Provisioning
+:page-layout: page
+:page-categories: [prod]
+:page-date: 2018-08-29 11:31:22
+:page-order: 99
+:icons: font
+:toc: macro
+
+If you followed the "Getting Started" procedures, you used a temporary link:../quickstarts/generating-provisioning-credentials.html[provisioning key]. This key enabled you to provision the permanent credentials for your test devices. This method is fine if you're just testing and want to get started quickly. When you move to production however, implicit provisioning is the more secure option.
+
+When you use implicit provisioning, you install permanent credentials on devices before they connect to the server. Unlike automatic provisioning, the server doesn't issue any credentials to devices. Instead, you use a root CA certificate to sign the credentials that you install on the device. You then install the same root CA certificate on the OTA Connect server.
+
+Every time the device attempts to connect, the server verifies that the device credentials are signed by the same CA that you originally installed on the server. The device also verifies that is communicating with a genuine {product-name} server.
+
+The following procedures describe how to enable different types of implicit provisioning for your devices.
+
+toc::[]
+
+== Simulate implicit provisioning for testing
+
+To use implicit provisioning in production, you need to have a root CA. If you want to test implicit provisioning without generating a root CA, you can simulate it with the `cert_provider` command.
+
+To use the `cert_provider` command, you must still generate a link:../quickstarts/generating-provisioning-credentials.html[provisioning key] like you would for automatic provisioning. With this method, you use the provisioning key to sign the device certificate. In production, you would use the root CA to sign the device certificate, but this method is useful for testing.
+
+To enable simulated implicit provisioning, follow these steps: ::
+1. Add the following lines to your local.conf:
++
+----
+SOTA_CLIENT_PROV = "aktualizr-implicit-prov"
+SOTA_PACKED_CREDENTIALS = "/path/to/your/credentials.zip"
+----
+
+1. Build a standard image using the bitbake command.
+1. Boot the image.
++
+The device should not automatically provision its credentials. To very this, log in to the {product-name} server and make sure that the device does not appear in the list of devices.
+1. Load the device credentials on to the device with `cert_provider` command:
++
+----
+cert_provider -c credentials.zip -t <device> -d /var/sota
+----
++
+You can find the link:https://github.com/advancedtelematic/aktualizr/tree/master/src/cert_provider[`cert_provider` source] in the aktualizr repo.
+
+== Enable implicit provisioning with a Hardware Security Module (HSM)
+
+As described in the link:prod-intro.html[introduction], it's a good idea to use a Hardware Security Model (HSM) to hold potentially sensitive device credentials.
+
+The following procedure describes how to use QEMU to simulate using an HSM. However, the procedure for your HSM will probably be different. We've provided these instructions as a basic guide to how implicit provisioning works but you'll need to make further changes on your own. For example, you'll probably need to adapt your BSP so that aktualizr can access the keys from your HSM.
+
+To enable implicit provisioning with an HSM, follow these steps: ::
+. link:generate-and-install-a-root-certificate.html[Generate and install a root certificate].
+. Add the following lines to your `conf/local.conf`:
++
+----
+SOTA_CLIENT_FEATURES = "hsm"
+SOTA_CLIENT_PROV = "aktualizr-hsm-prov"
+----
+. Build a standard image using bitbake. Make sure that an ssh server is installed. Usually you can do this with `IMAGE_INSTALL_append = " dropbear "`.
+. Boot the image.
+. Copy the device credentials and device gateway root CA certificate to the device's HSM. For the QEMU simulated HSM, enter the device directory whose credentials you want to copy, then enter the following command:
++
+----
+scp -P 2222 -pr ./ root@localhost:/var/sota/token
+----
+.. The server authenticates the client device by verifying that the client's certificate was signed by the root CA private key that was uploaded in step 2.
+.. The client device authenticates the server by verifying that the server's certificate was signed by the server's internal root CA private key.
+.. The device is provisioned and appears online in the web UI.
+
+'''
+
+link:../concepts/provisioning-methods-and-credentialszip.html[More information] is available on how auto-provisioning, implicit provisioning (with or without an HSM), and the various files included in `credentials.zip` are related.

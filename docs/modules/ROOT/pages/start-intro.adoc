@@ -1,0 +1,10 @@
+= Introduction
+:page-layout: page
+:page-categories: [quickstarts]
+:page-date: 2018-02-08 17:35:40
+:page-order: 1
+:icons: font
+
+These guides will help you get your first device up and running with {product-name}. They're designed to be easy getting started, and deliver a setup that's appropriate for using {product-name-short} as part of your development workflow. Once you're ready to start using {product-name-short} for production, there may be some extra steps you'll want to take--for example, taking control of your own key material and certificate authorities and using a hardware security module to store key material on your devices. To learn how to do that, you can read through our link:../prod/prod-intro.html[Moving to Production] guides.
+
+The absolute simplest way to get started is to build a basic Yocto system and deploy it. You can do that link:../quickstarts/raspberry-pi.html[on a Raspberry Pi] to see {product-name-short} running on a real device, or link:../quickstarts/qemuvirtualbox.html[via QEMU] to just get a feel for how it works. Alternatively, you can link:../quickstarts/automotive-grade-linux.html[start with Automotive Grade Linux], or if you're already an experienced embedded developer with a Yocto-based project of your own, you can link:../quickstarts/adding-ats-garage-updating-to-an-existing-yocto-project.html[add our meta-updater layer (and possibly a BSP layer) to your existing project].
