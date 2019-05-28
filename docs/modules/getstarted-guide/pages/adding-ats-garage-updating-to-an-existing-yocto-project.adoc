@@ -2,7 +2,7 @@
 :page-layout: page
 :page-categories: [quickstarts]
 :page-date: 2017-05-23 16:27:58
-:page-order: 4
+:page-order: 6
 :icons: font
 
 If you already have a Yocto-based project that you want to update using {product-name}, you just need to do four things to get started:

@@ -1,4 +1,4 @@
-= Create a "fake" device on your workstation
+= Simulate a device on your workstation
 :page-layout: page
 :page-categories: [quickstarts]
 :page-date: 2018-11-19 11:28:47
@@ -7,7 +7,7 @@
 :aktualizr-version: 2018.13
 :sectnums:
 
-You can try out OTA Connect without having to build a whole device with Yocto. This can be useful for testing the system outside of actual device updates. In this guide, you will install an aktualizr binary on your local machine, create a directory with configuration files and credentials for aktualizr to use, and run aktualizr from there.
+You can try out OTA Connect without having to build a whole device image. This can be useful for testing the system outside of actual device updates. In this guide, you will install aktualizr (the OTA client software) on your local machine, create a directory with configuration files and credentials for aktualizr to use, and run aktualizr from there.
 
 == Prerequisites
 
@@ -76,15 +76,15 @@ cmake ..
 make install
 ----
 
-== Prepare an environment for a fake device
+== Prepare an environment for a simulated device
 
-Make a directory for each fake device you want to create. This directory will store your configuration files for that device, plus the device metadata and keys.
+Make a directory for each device that you want to simulate. This directory will store your configuration files for that device, plus the device metadata and keys.
 
 Each directory should contain the following:
 
 * credentials.zip
 * sota_local.toml -- a config file for aktualizr
-* (Optional) A `secondary_configs` directory, containing one or more JSON files representing secondary ECUs.footnote:[OTA Connect is designed for automotive use cases, where there may be many distinct microcontrollers (ECUs, in automotive parlance) inside a vehicle--sometimes over 100. Updates are downloaded by one *primary* ECU, checked for authenticity, and then distributed to *secondary* ECUs throughout the vehicle.]
+* (Optional) A `secondary_configs` directory, containing one or more JSON files representing secondary ECUs.footnote:[The terms "primary" and "secondary" ECU are used in the Uptane specificaton. For more information about the difference between primary and secondary ECUs, see our overview of the link:../concepts/ats-garage-security-with-uptane.html#primary-and-secondary-ecus[Uptane framework].]
 
 An example directory is below:
 
@@ -136,6 +136,6 @@ From the directory you've created, run aktualizr and point it to the current dir
 
 This will start aktualizr in its normal mode: it will provision with the server using the `credentials.zip` provided, then start listening for updates. You can also link:../client-config/aktualizr-runningmodes-finegrained-commandline-control.html[selectively trigger aktualizr] or use any of the other options; you just need to specify `-c .` each time.
 
-You should now be able to see your fake device provisioned into your OTA Connect account, with two secondary ECUs listed.
+You should now be able to see your simulated device provisioned into your OTA Connect account, with two secondary ECUs listed.
 
-NOTE: Because the aktualizr config we've given uses relative paths, you *must* run aktualizr from the directory you created. However, if you prefer, you can use absolute paths in the config file instead. The reason we've chosen to use relative paths is to make it easy to create multiple distinct fake devices, by simply making a copy of the whole directory.
+NOTE: Because the aktualizr config we've given uses relative paths, you *must* run aktualizr from the directory you created. However, if you prefer, you can use absolute paths in the config file instead. The reason we've chosen to use relative paths is to make it easy to simulate multiple distinct devices, by simply making a copy of the whole directory.

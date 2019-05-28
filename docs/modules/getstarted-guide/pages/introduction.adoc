@@ -5,6 +5,6 @@
 :page-order: 1
 :icons: font
 
-The {product-name} client, https://github.com/advancedtelematic/aktualizr[aktualizr], provides a lot of different configuration options. In https://github.com/advancedtelematic/meta-updater[meta-updater], we provide sensible defaults for doing updates with automatic provisioning on a single ECU. But especially for use in vehicles, you may need to do a lot more: configuring secondary ECUs of different types, managing different provisioning methods, and so on.
+The {product-name} client, https://github.com/advancedtelematic/aktualizr[aktualizr], provides a lot of different configuration options. In https://github.com/advancedtelematic/meta-updater[meta-updater], we provide sensible defaults for doing updates on a single ECU and provisioning with shared credentials. But especially for use in vehicles, you may need to do a lot more: configuring secondary ECUs of different types, managing different provisioning methods, and so on.
 
 Here, we provide reference documentation on aktualizr's usage and configuration. However, if you need to go further than what's possible with the command-line interface, you can also use https://advancedtelematic.github.io/aktualizr/class_aktualizr.html[libaktualizr] to make your own client. In fact, aktualizr is a fairly thin wrapper around libaktualizr itself, and we provide also an https://github.com/advancedtelematic/aktualizr/tree/master/src/hmi_stub[even simpler reference client] along with https://advancedtelematic.github.io/aktualizr/class_aktualizr.html[doxygen docs] of the libaktualizr API.

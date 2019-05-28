@@ -45,7 +45,7 @@ In {product-name-short}, we generally assume that updates will be OSTree images,
 ****
 . The client polls {product-name-short} servers periodically to check if there are any new updates.
 . If there are, the client requests to download the update, which consists of a metadata file pointing to a particular OSTree commit. (For other types of update, the download might be something else, like application binaries, installation packages containing binaries and install scripts, or data packs.)
-. The update is cryptographically checked for validity following the https://uptane.org[Uptane specification].
+. The update is cryptographically checked for validity following the https://uptane.github.io[Uptane specification].
 . The client checks if the reference is available locally; if it's not, the commit is downloaded from TreeHub, only actually downloading objects not already present in the repo.
 . Each object's SHA is checked for correctness.
 . Once all objects are downloaded and verified, a flag is set telling OSTree to boot into the new filesystem the next time it boots.

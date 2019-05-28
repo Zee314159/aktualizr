@@ -26,7 +26,7 @@ First, clone a manifest file for AGL Electric Eel:
 ----
 mkdir myproject
 cd myproject
-repo init -b eel -m eel_5.1.0.xml -u https://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo.git
+repo init -b eel -m default.xml -u https://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo.git
 repo sync
 ----
 
@@ -38,14 +38,6 @@ Yocto is a set of tools, templates and methods for building Linux systems from s
 
 All of these layers are assembled into a built Linux system by Bitbake, the build tool of the Yocto Project, based on the instructions in the recipes inside the layers.
 ****
-
-==== Recommended: update to the latest meta-updater
-
-AGL Eel packages an out-of-date version of meta-updater. We strongly recommend checking out the tip of the `pyro` branch, instead:
-
-----
-git -C meta-updater/ checkout pyro
-----
 
 === Run environment setup script
 
