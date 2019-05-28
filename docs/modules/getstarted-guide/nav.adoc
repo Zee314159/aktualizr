@@ -1,0 +1,29 @@
+.Getting Started
+* xref:start-intro.adoc[Introduction]
+* xref:generating-provisioning-credentials.adoc[Generate a provisioning key]
+* xref:raspberry-pi.adoc[Build a Raspberry Pi image]
+* xref:qemuvirtualbox.adoc[Build a QEMU/VirtualBox image]
+* xref:automotive-grade-linux.adoc[Build an Automotive Grade Linux image]
+* xref:install-a-client-locally-with-fake-secondaries.adoc[Simulate a device on your workstation]
+* xref:pushing-updates.adoc[Push software updates]
+* xref:adding-ats-garage-updating-to-an-existing-yocto-project.adoc[Add OTA Connect to an existing Yocto project]
+
+.Moving to Production
+* xref:prod-intro.adoc[Introduction]
+* xref:install-garage-sign-deploy.adoc[Install the "garage deploy" tool]
+* xref:generate-and-install-a-root-certificate.adoc[Generate and install root certificates]
+* xref:crossdeploying-device-images-to-a-different-account.adoc[Cross-deploy device images to a different account]
+* xref:rotating-signing-keys.adoc[Rotate signing keys]
+* xref:enable-implicit-provisioning.adoc[Enable Implicit Provisioning]
+
+.Tips and Tricks
+* xref:useful-bitbake-commands.adoc[Useful Bitbake commands]
+* xref:provisioning-methods-and-credentialszip.adoc[OSTree usage]
+* xref:ostree-usage.adoc[OSTree usage]
+* xref:troubleshooting.adoc[troubleshooting]
+
+.Using OTA Connect
+* xref:devices.adoc[Managing devices]
+* xref:device-page.adoc[Individual Device View]
+* xref:campaigns.adoc[Managing campaigns]
+* xref:blacklistingimpact-analysis.adoc[Blacklisting/Impact analysis]
