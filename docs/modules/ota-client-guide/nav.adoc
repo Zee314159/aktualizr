@@ -1,0 +1,13 @@
+.Using the OTA Connect Client
+* xref:prod-intro.adoc[Introduction]
+* xref:install-garage-sign-deploy.adoc[Install the "garage deploy" tool]
+* xref:generate-and-install-a-root-certificate.adoc[Generate and install root certificates]
+* xref:crossdeploying-device-images-to-a-different-account.adoc[Cross-deploy device images to a different account]
+* xref:rotating-signing-keys.adoc[Rotate signing keys]
+* xref:enable-implicit-provisioning.adoc[Enable Implicit Provisioning]
+
+.Tips and Tricks
+* xref:useful-bitbake-commands.adoc[Useful Bitbake commands]
+* xref:provisioning-methods-and-credentialszip.adoc[OSTree usage]
+* xref:ostree-usage.adoc[OSTree usage]
+* xref:troubleshooting.adoc[troubleshooting]

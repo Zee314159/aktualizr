@@ -1,0 +1,97 @@
+= Rotate signing keys
+:page-layout: page
+:page-redirect_from: /quickstarts/rotate-tuf-keys
+:page-categories: [prod]
+:page-date: 2018-02-08 17:55:08
+:page-order: 3
+:icons: font
+:toc: macro
+:sectnums:
+:garage-deploy-version: 2018.13
+
+
+{product-name} has a link:../concepts/ats-garage-security-with-uptane.html[security concept] that includes signing system images with secure, offline keys.
+As part of the quickstart, your {product-name} account creates initial keys and stores them online.
+Before using {product-name} in production, however, you should create offline keys that you manage yourself, then rotate out the initial online keys.
+
+Before you start, make sure that you've installed the link:install-garage-sign-deploy.html[`garage-deploy`] tool first. This tool includes the `garage-sign` utility, which you'll need for this procedure.
+
+toc::[]
+
+== Rotate the TUF `root` and `targets` keys
+
+=== Create a local TUF repository
+
+A TUF repository is just a directory structure containing signed metadata in JSON format. Create a new one called _mytufrepo_ with `garage-sign`:
+
+----
+garage-sign init --repo mytufrepo --credentials /path/to/credentials.zip
+----
+
+This command creates a `./tuf/mytufrepo/` directory tree in the current directory.
+This directory should be secured on an encrypted filesystem.
+
+=== Generate new TUF keys
+
+There are two roles in the repo, each of which needs a new key.
+
+----
+garage-sign key generate --repo mytufrepo --name myroot --type rsa
+garage-sign key generate --repo mytufrepo --name mytargets --type rsa
+----
+
+****
+IMPORTANT: It is critical to keep these keys offline on secure hardware. *Do not lose these keys.*
+****
+
+=== Rotate the online keys with your new offline keys
+
+This is a four-step process:
+
+. Pull the current `targets.json` from {product-name-short}:
++
+----
+garage-sign targets pull --repo mytufrepo
+----
+. Perform a complete root key rotation:
++
+----
+garage-sign move-offline --repo mytufrepo --old-root-alias origroot \
+    --new-root myroot --new-targets mytargets
+----
++
+This command
++
+* removes the original `root` key from {product-name-short},
+* generates a new `root.json` with the keys generated in the previous step (`myroot` and `mytargets`),
+* signs the new `root.json` with both the old and new `root` keys, and
+* uploads the newly signed `root.json` to {product-name-short}
++
+. Sign the current `targets.json` with the new `targets` key:
++
+----
+garage-sign targets sign --repo mytufrepo --key-name mytargets
+----
++
+. Upload the newly signed `targets.json` to {product-name-short}:
++
+----
+garage-sign targets push --repo mytufrepo
+----
+
+You have now successfully taken the TUF keys offline.
+
+NOTE: After rotating keys, you will no longer be able to upload packages through the {product-name-short} web UI--only the usual way, through bitbake.
+
+== Push new images with bitbake
+
+Export the new offline `targets` into a new credentials file that you can use with `bitbake`:
+
+----
+garage-sign export-credentials --repo mytufrepo --target-key-name mytargets --to offline-credentials.zip
+----
+
+Update your `local.conf` to use the new `offline-credentials.zip` file and run `bitbake` as before.
+
+As part of the `bitbake` process, the image's metadata inside `targets.json` is signed with your offline TUF keys. The signed `targets.json` is then uploaded to your {product-name} account.
+

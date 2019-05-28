@@ -1,6 +1,7 @@
-name: getstarted
-title: Get Started Guide
+name: ota-client
+title: Using the OTA Connect Client
 version: dev
 nav:
 # - modules/ROOT/nav.adoc
-- modules/getstarted-guide/nav.adoc
+- modules/ota-client-guide/nav.adoc
+- modules/ota-clientlib-guide/nav.adoc

@@ -1,0 +1,73 @@
+= Get started
+:page-layout: page
+:page-categories: [using-libaktualizr]
+:page-date: 2018-11-28 14:08:55
+:page-order: 2
+:baseurl: https://raw.githubusercontent.com/advancedtelematic/aktualizr/
+:branch: master
+:icons: font
+
+See the comments in the asciidoc source.
+
+////
+      Use this topic to provide instructions on how to get set up from the ABSOLUTE beginning
+
+      This doc wont be on GitHub so you might even want to include instructions on how to download/clone
+      the files you need.
+
+      If necessary, point to the parts existing of the documentation to cover tasks that you don't 
+      want to describe in the integration guide.
+
+      For example, getting provisioning credentials:
+      " First you need to link:../quickstarts/generating-provisioning-credentials.html[Get your Credentials]"
+
+      It could be something like: 
+
+      Major steps:
+      * Get provisioning credentials
+      * Build a test image with "normal" aktualizr
+      * Get to know device info the web app
+      ect...
+
+
+////
+
+
+
+
+
+////
+
+      You then want to include a "Quick Start" procedure that describes one simple task that a
+      developer can perform so that they know that they've gotten set up correctly.
+
+      It is a slimmed down procedure that doesn't go into too much conceptual detail about the task
+
+      For example, you could describe how to use the library to check for updates (within a larger application).
+
+      More details about all the possible options and tasks will be covered later in the guide.
+
+      For instpiration:
+      * See the "Create an Applicaton topic" in the OLP Data Library developer guide:
+            https://developer.here.com/olp/documentation/data-client-library/dev_guide/client/create-an-application.html
+      * See also this C++ "Getting Started" which is from a completely differemt domain (building gesture driven-apps)
+            http://dev-wiki.gestureworks.com/index.php/GestureWorksCore:C%2B%2B_%26_openFrameworks_-_Getting_Started_I_(Hello_World)
+////
+
+// Include examples from your sources files like this
+
+Example of including source code with line numbers
+
+[source,c++,subs=attributes+]
+----
+include::{baseurl}{branch}/src/libaktualizr/bootloader/bootloader.cc[lines=27..41]
+----
+
+Example of including source code with tagged comments.
+
+[source,bash]
+----
+include::https://raw.githubusercontent.com/advancedtelematic/ota-community-edition/master/scripts/start.sh[tags="genserverkeys"]
+----
+
+This approach is preferred, becasue it lets other developers know which sections of the code are included in the documentation.

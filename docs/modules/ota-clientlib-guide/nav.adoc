@@ -1,0 +1,3 @@
+.Using the OTA Connect Client Library
+* xref:why-use-libaktualizr.adoc[Why Use Libaktualizr?]
+* xref:get-started-libaktualizr.adoc[Getting Started]

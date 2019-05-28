@@ -1,6 +1,0 @@
-= Nothing
-:page-redirect_to: http://google.com
-
-== Section
-
-test

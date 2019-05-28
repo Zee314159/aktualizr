@@ -1,0 +1,17 @@
+= Implicit provisioning with a Hardware Security Module
+:page-layout: page
+:page-categories: [none]
+:page-date: 2018-03-15 13:51:21
+:page-order: 99
+:icons: font
+:toc: macro
+
+As described in the link:../prod/prod-intro.html[introduction], using a hardware security model to hold potentially-sensitive provisioning key material may be a good idea. In this document, we first describe how to use QEMU to simulate using an HSM and give outlines of how to generate the requisite keys and certificates. How exactly it's done for your particular HSM will, of course, vary significantly, and will likely require some BSP integration work so that aktualizr knows how to access the keys from the HSM during provisioning.
+
+The following steps should work when building for a QEMU target:
+
+include::https://raw.githubusercontent.com/advancedtelematic/aktualizr/master/docs/hsm-provisioning.adoc[tag="full-instructions"]
+
+'''
+
+link:../concepts/provisioning-methods-and-credentialszip.html[More information] is available on how auto-provisioning, implicit provisioning (with or without an HSM), and the various files included in `credentials.zip` are related.
