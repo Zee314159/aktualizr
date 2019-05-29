@@ -5,9 +5,28 @@
 * xref:crossdeploying-device-images-to-a-different-account.adoc[Cross-deploy device images to a different account]
 * xref:rotating-signing-keys.adoc[Rotate signing keys]
 * xref:enable-implicit-provisioning.adoc[Enable Implicit Provisioning]
+* xref:provisioning-methods-and-credentialszip.adoc[Provisioning Methods and Credentials]
+
+.Client Configuration
+* xref:introduction.adoc[Introduction]
+* xref:aktualizr-config-options.adoc[Client configuration options]
+* xref:client-provisioning-methods.adoc[Client provisioning methods]
+* xref:running-modes.adoc[Selectively trigger aktualizr]
+
+//// 
+MC: Need to think abotu where this stuff goes
+CONCEPTS
+Yocto, OSTree, and TreeHub
+Understanding HERE OTA Connect
+Comparing full-filesystem update strategies
+OTA Connect security: The Uptane framework
+Provisioning methods and credentials.zip
+CLIENT CONFIGURATION
+////
 
 .Tips and Tricks
+* xref:how-can-i-check-which-ostree-version-is-installed.adoc[Check which OSTree commit is deployed]
+* xref:i-dont-need-to-build-the-sd-card-images-every-timehow-can-i-do-a-build-that-only-does-the-ostree-part.adoc[Build only the OSTree part]
 * xref:useful-bitbake-commands.adoc[Useful Bitbake commands]
-* xref:provisioning-methods-and-credentialszip.adoc[OSTree usage]
 * xref:ostree-usage.adoc[OSTree usage]
 * xref:troubleshooting.adoc[troubleshooting]
